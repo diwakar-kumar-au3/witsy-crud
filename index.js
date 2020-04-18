@@ -26,12 +26,12 @@ MongoClient.connect(
   }
 );
 
-// if (process.env.NODE_ENV === "production") {
-app.use(express.static("build"));
-app.get(/^\/(?!api).*/, (req, res) => {
-  res.sendFile(path.join(__dirname, "./build/index.html"));
-});
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("build"));
+  app.get(/^\/(?!api).*/, (req, res) => {
+    res.sendFile(path.join(__dirname, "./build/index.html"));
+  });
+}
 
 app.locals.ObjectId;
 ObjectId = require("mongodb").ObjectID;
